@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://bitwiseshiftleft.github.io/sjcl/sjcl.js"></script>
+        <title>CF Stonks</title>
+    </head>
+    <body>
+        <div class="container">
+            <p class="display-1">CF Stonks</p>
+            <p>By: eyangch</p>
+            <hr>
+            <div id="signed-out">
+                <p>
+                    You are not logged in!
+                </p>
+                <label for="sign-username">Username: </label>
+                <input type="text" id="sign-username" name="sign-username">
+                </br>
+                <label for="sign-password">Password: </label>
+                <input type="password" id="sign-password" name="sign-password">
+                </br>
+                <button id="register" onclick="register();">Register</button>
+                <button id="login" onclick="login();">Login</button>
+            </div>
+            <div id="signed-in">
+                <p>
+                    Hi, <span id="username"></span>.
+                </p>
+                <button id="logout" onclick="logout();">Logout</button>
+                </br></br>
+                <h2>Stats: </h2>
+                <p><b>Money:</b> $<span id="money"></span></p>
+                <p><b>Net Worth:</b> $<span id="networth"></span></p>
+                <p id="stocks">
+                    <b>Stocks:</b></br>
+                </p>
+                <h2>Invest!</h2>
+                <label for="handle">Handle to invest: </label>
+                <input type="text" id="handle" name="handle">
+                </br>
+                <label for="amt">Amount to buy</label>
+                <input type="text" id="amt" name="amt" maxlength="4" size="4">
+                </br>
+                <button id="invest" onclick="invest();">Invest!</button>
+                </br></br>
+                <h2>Sell!</h2>
+                <label for="sellhandle">Handle to sell: </label>
+                <input type="text" id="sellhandle" name="sellhandle">
+                </br>
+                <label for="sellamt">Amount to buy</label>
+                <input type="text" id="sellamt" name="sellamt" maxlength="4" size="4">
+                </br>
+                <button id="sell" onclick="sell();">Invest!</button>
+                </br></br>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
