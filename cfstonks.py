@@ -140,7 +140,7 @@ def invest():
     with open("data.json") as f:
         udat = json.load(f)
     
-    if amt * price > udat[user]["$"]:
+    if amt * price > udat[user]["$"] or amt < 0:
         return "0"
     udat[user]["$"] -= amt * price
     
@@ -195,7 +195,7 @@ def sell():
     if handle not in udat[user]["stonk"]:
         return "0"
 
-    if amt > udat[user]["stonk"][handle]:
+    if amt > udat[user]["stonk"][handle] or amt < 0:
         return "0"
     udat[user]["$"] += amt * price
     
