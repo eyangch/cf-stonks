@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 def c_fsize():
-    fsize = os.path.getsize("login.json") + os.path.getsize("data.json")
+    fsize = os.path.getsize("data/login.json") + os.path.getsize("data/data.json")
     if fsize > 1000000:
         return True
     return False
@@ -44,18 +44,18 @@ def reg():
         return "0";
 
     logdat = {}
-    with open("login.json") as f:
+    with open("data/login.json") as f:
         logdat = json.load(f)
     if user in logdat:
         return "0"; 
     logdat[user] = hashlib.sha256(pwd.encode()).hexdigest();
-    with open("login.json", "w") as f:
+    with open("data/login.json", "w") as f:
         json.dump(logdat, f);
 
     udat = {}
-    with open("data.json") as f:
+    with open("data/data.json") as f:
         udat = json.load(f)
-    with open("data.json", "w") as f:
+    with open("data/data.json", "w") as f:
         udat[user] = {"$": 4000.0, "stonk": {}}
         json.dump(udat, f);
 
@@ -73,7 +73,7 @@ def login():
         return "0";
 
     logdat = {}
-    with open("login.json") as f:
+    with open("data/login.json") as f:
         logdat = json.load(f)
     if user not in logdat:
         return "0"; 
@@ -93,7 +93,7 @@ def get():
         return "0"
     
     udat = {}
-    with open("data.json") as f:
+    with open("data/data.json") as f:
         udat = json.load(f)
 
     if user not in udat:
@@ -120,7 +120,7 @@ def invest():
         return "0"
 
     logdat = {}
-    with open("login.json") as f:
+    with open("data/login.json") as f:
         logdat = json.load(f)
     if user not in logdat:
         return "0"
@@ -137,7 +137,7 @@ def invest():
     print("{} has a rating of {}, costing {}".format(handle, rating, price))
     
     udat = {}
-    with open("data.json") as f:
+    with open("data/data.json") as f:
         udat = json.load(f)
     
     if amt * price > udat[user]["$"] or amt <= 0:
@@ -148,7 +148,7 @@ def invest():
         udat[user]["stonk"][handle] = 0
     udat[user]["stonk"][handle] += amt
 
-    with open("data.json", "w") as f:
+    with open("data/data.json", "w") as f:
         json.dump(udat, f)
 
     return "1"
@@ -172,7 +172,7 @@ def sell():
         return "0"
 
     logdat = {}
-    with open("login.json") as f:
+    with open("data/login.json") as f:
         logdat = json.load(f)
     if user not in logdat:
         return "0"
@@ -189,7 +189,7 @@ def sell():
     print("{} has a rating of {}, costing {}".format(handle, rating, price))
     
     udat = {}
-    with open("data.json") as f:
+    with open("data/data.json") as f:
         udat = json.load(f)
     
     if handle not in udat[user]["stonk"]:
@@ -203,10 +203,18 @@ def sell():
     if udat[user]["stonk"][handle] == 0:
         del udat[user]["stonk"][handle]
 
-    with open("data.json", "w") as f:
+    with open("data/data.json", "w") as f:
         json.dump(udat, f)
 
     return "1"
 
 if __name__ == "__main__":
+    if not os.path.isdir("data"):
+        os.mkdir("data")
+    if not os.path.isfile("data/login.json"):
+        with open("data/login.json", "w") as f:
+            f.write("{ }")
+    if not os.path.isfile("data/data.json"):
+        with open("data/data.json", "w") as f:
+            f.write("{ }")
     app.run()

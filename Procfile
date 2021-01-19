@@ -1,1 +1,0 @@
-web: gunicorn cfstonks:app
