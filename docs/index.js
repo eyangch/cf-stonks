@@ -25,7 +25,7 @@ if(logged_in){
     }
     var xmlreq1 = new XMLHttpRequest();
     xmlreq1.addEventListener("load", init_response);
-    xmlreq1.open("GET", "https://eyangch-c7c541c9.localhost.run/login?u=" + user + "&p=" + pass);
+    xmlreq1.open("GET", "https://cfstonks.loca.lt/login?u=" + user + "&p=" + pass);
     xmlreq1.send();
 }
 
@@ -64,7 +64,7 @@ if(logged_in){
     }
     var xmlreq1 = new XMLHttpRequest();
     xmlreq1.addEventListener("load", get_response);
-    xmlreq1.open("GET", "https://eyangch-c7c541c9.localhost.run/get?u=" + user);
+    xmlreq1.open("GET", "https://cfstonks.loca.lt/get?u=" + user);
     xmlreq1.send(); 
 }else{
     document.getElementById("signed-in").innerHTML = "";
@@ -85,7 +85,7 @@ function register(){
     var regreq = new XMLHttpRequest();
     regreq.addEventListener("load", reg_response);
     //console.log(h_sha256(reg_pass));
-    regreq.open("GET", "https://eyangch-c7c541c9.localhost.run/reg?u=" + reg_user + "&p=" + h_sha256(reg_pass));
+    regreq.open("GET", "https://cfstonks.loca.lt/reg?u=" + reg_user + "&p=" + h_sha256(reg_pass));
     regreq.send();
 }
 
@@ -106,7 +106,7 @@ function login(){
     var regreq = new XMLHttpRequest();
     regreq.addEventListener("load", login_response);
     //console.log(h_sha256(login_pass));
-    regreq.open("GET", "https://eyangch-c7c541c9.localhost.run/login?u=" + login_user + "&p=" + h_sha256(login_pass));
+    regreq.open("GET", "https://cfstonks.loca.lt/login?u=" + login_user + "&p=" + h_sha256(login_pass));
     regreq.send();
 }
 
@@ -129,7 +129,7 @@ function invest(){
     }
     var xmlreq1 = new XMLHttpRequest();
     xmlreq1.addEventListener("load", invest_response);
-    xmlreq1.open("GET", "https://eyangch-c7c541c9.localhost.run/invest?u=" + user + "&p=" + pass + "&handle=" + handle + "&amt=" + amt);
+    xmlreq1.open("GET", "https://cfstonks.loca.lt/invest?u=" + user + "&p=" + pass + "&handle=" + handle + "&amt=" + amt);
     xmlreq1.send();
 }
 
@@ -146,6 +146,6 @@ function sell(){
     }
     var xmlreq1 = new XMLHttpRequest();
     xmlreq1.addEventListener("load", sell_response);
-    xmlreq1.open("GET", "https://eyangch-c7c541c9.localhost.run/sell?u=" + user + "&p=" + pass + "&handle=" + handle + "&amt=" + amt);
+    xmlreq1.open("GET", "https://cfstonks.loca.lt/sell?u=" + user + "&p=" + pass + "&handle=" + handle + "&amt=" + amt);
     xmlreq1.send();
 }
