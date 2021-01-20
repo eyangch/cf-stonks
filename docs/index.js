@@ -26,6 +26,7 @@ if(logged_in){
     var xmlreq1 = new XMLHttpRequest();
     xmlreq1.addEventListener("load", init_response);
     xmlreq1.open("GET", "https://cfstonks.loca.lt/login?u=" + user + "&p=" + pass);
+    xmlreq1.setRequestHeader("Bypass-Tunnel-Reminder", "x");
     xmlreq1.send();
 }
 
@@ -65,6 +66,7 @@ if(logged_in){
     var xmlreq1 = new XMLHttpRequest();
     xmlreq1.addEventListener("load", get_response);
     xmlreq1.open("GET", "https://cfstonks.loca.lt/get?u=" + user);
+    xmlreq1.setRequestHeader("Bypass-Tunnel-Reminder", "x");
     xmlreq1.send(); 
 }else{
     document.getElementById("signed-in").innerHTML = "";
@@ -86,6 +88,7 @@ function register(){
     regreq.addEventListener("load", reg_response);
     //console.log(h_sha256(reg_pass));
     regreq.open("GET", "https://cfstonks.loca.lt/reg?u=" + reg_user + "&p=" + h_sha256(reg_pass));
+    regreq.setRequestHeader("Bypass-Tunnel-Reminder", "x");
     regreq.send();
 }
 
@@ -107,6 +110,7 @@ function login(){
     regreq.addEventListener("load", login_response);
     //console.log(h_sha256(login_pass));
     regreq.open("GET", "https://cfstonks.loca.lt/login?u=" + login_user + "&p=" + h_sha256(login_pass));
+    regreq.setRequestHeader("Bypass-Tunnel-Reminder", "x");
     regreq.send();
 }
 
@@ -130,6 +134,7 @@ function invest(){
     var xmlreq1 = new XMLHttpRequest();
     xmlreq1.addEventListener("load", invest_response);
     xmlreq1.open("GET", "https://cfstonks.loca.lt/invest?u=" + user + "&p=" + pass + "&handle=" + handle + "&amt=" + amt);
+    xmlreq1.setRequestHeader("Bypass-Tunnel-Reminder", "x");
     xmlreq1.send();
 }
 
@@ -147,5 +152,6 @@ function sell(){
     var xmlreq1 = new XMLHttpRequest();
     xmlreq1.addEventListener("load", sell_response);
     xmlreq1.open("GET", "https://cfstonks.loca.lt/sell?u=" + user + "&p=" + pass + "&handle=" + handle + "&amt=" + amt);
+    xmlreq1.setRequestHeader("Bypass-Tunnel-Reminder", "x"); 
     xmlreq1.send();
 }
