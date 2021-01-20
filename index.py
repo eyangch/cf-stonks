@@ -32,7 +32,7 @@ def getRating(handle):
     return int(h_info["result"][0]["rating"])
 
 def getPrice(rating):
-    return 1.002 ** rating
+    return 1.002 ** rating + 50
 
 @app.route("/reg", methods = ["GET"])
 def reg():
