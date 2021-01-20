@@ -51,7 +51,7 @@ if(logged_in){
             function cf_response(){
                 cf_data = JSON.parse(this.responseText);
                 rating = cf_data["result"][0]["rating"];
-                price = Math.pow(1.002, rating) + 100;
+                price = Math.pow(1.002, rating) + 50;
                 chandle = cf_data["result"][0]["handle"].toLowerCase();
                 //console.log(user_data["stonk"][chandle].toString() + " stocks of " + chandle + " at " + price.toString() + " each (rated " + rating.toString() + ")");
                 incNet(price * user_data["stonk"][chandle]);
